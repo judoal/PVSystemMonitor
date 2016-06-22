@@ -1,0 +1,22 @@
+
+
+
+trigger at midnight every day.
+
+	get new date
+	get month (may be same month)
+	get Year (may be same year)
+	
+	log file manager accesses date info
+	
+	      							does year dir exist?
+	      							/					\
+	      						   / yes				 \no
+	      					      /						  \
+	      			does mo dir exist?			  		  create new year directory
+	      			|				|					  create Jan directory in new year directory
+	      		yes	|				|no					  create day #1 file in new Jan directory
+	      			|				|
+	      	   new date file		|					  
+	      							inc mon, new mon dir
+	      							create day#1 file in mon dir

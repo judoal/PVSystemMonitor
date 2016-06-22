@@ -1,0 +1,485 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+ 
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+<meta name="viewport" content="width=1100,user-scalable=yes"/>
+
+
+<title>Quartz Scheduler | Documentation | Tutorial Lesson 06</title>
+
+<link rel="stylesheet" href="/ui/stylesheets/core.min.css?2013-09-11-14-25"/>
+<link rel="stylesheet" href="/stylesheets/quartz-scheduler.css?2013-09-11-14-25"/>
+
+
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<script src="/ui/javascripts/application.min.js?2013-09-11-14-25"></script>
+
+<!--[if (gte IE 5.5)&(lte IE 8)]>
+<script type="text/javascript" src="/ui/javascripts/selectivizr.js?2013-09-11-14-25"></script>
+<![endif]-->
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-131151-11']);
+_gaq.push(['_trackPageview']);
+_gaq.push(['_setAccount', 'UA-131151-14']);
+_gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body id="tutorial-lesson-06-page" class="quartz-scheduler-site tutorial-lesson-06-page documentation-controller documentation-controller_tutorial-lesson-06-page chrome chrome49 mac">
+
+    <div id="the-grid"></div>
+
+    <!-- :: SITE TAB NAVIGATION :: -->
+<div class="site-tab wrapper">
+    <div class="container">
+        <section id="siteTabs" class="quartz-scheduler">
+            <div class="row">
+                <div class="ten columns">
+                    <nav>
+                    <ul>
+                        <li><a href="http://terracotta.org?sid=pqicr74dop0f09c117h2m51tg3&token=uvjy6/Ll1RCQc">Terracotta.org</a></li>
+                        <li><a href="http://ehcache.org?sid=pqicr74dop0f09c117h2m51tg3&token=uvjy6/Ll1RCQc">Ehcache.org</a></li>
+                        <li class="is-current"><a href="http://quartz-scheduler.org?sid=pqicr74dop0f09c117h2m51tg3&token=uvjy6/Ll1RCQc">Quartz-Scheduler.org</a></li>
+                    </ul>
+                    </nav>
+                    
+                </div><!-- .ten.columns -->
+                <div class="six columns">
+                    <p class="right">
+                        Call us: +1-415-738-4000
+                    </p>
+                </div><!-- .six.columns -->
+            </div><!-- .row -->
+        </section><!-- #siteTabs -->
+    </div><!-- .container -->
+</div><!-- .site-tab.wrapper -->
+
+
+<div class="wrapper top docs">
+
+    <div class="container logo">
+
+    <!-- :: BRANDING BAR & PAGE SECONDARY NAVIGATION :: -->
+    <div id="brand-row" class="row">
+        <div id="brand" class="three columns">
+            <a href="/"><img src="/images/logos/logo-quartz-scheduler.png" alt="Quartz Scheduler" /></a>
+        </div><!-- .three.columns -->
+
+        <div class="four columns">
+            <ul id="tagLine"><li>Job Scheduler</li></ul>
+        </div><!-- .four.columns -->
+
+        <div class="nine columns">
+            <nav id="secondaryNavDocs">
+                <ul>
+                    <li><a class="_blank" href="http://forums.terracotta.org/forums/forums/list.page">Forums</a></li>
+                    <li><a href="http://blog.terracotta.org">Blog</a></li>
+                    <li><a href="http://terracotta.org/contact">Contact Us</a></li>
+                    <li><a href="http://terracotta.org/account">My Account</a></li>
+                    <li>
+                        <form id="googlesearch" action="/search" class="nice">
+    <!-- <input type="hidden" value="010355699337749778899:687m-r-bfmy" name="cx"/> -->
+    <!-- <input type="hidden" value="FORID:11" name="cof"/> -->
+    <input value="" id="box" name="q" type="text" class="small input-text"/>
+    <button type="submit" name="sa" value="Search"><img src="/ui/images/search-button.png" alt="Search"/></button>
+</form>
+                    </li>
+                </ul>
+            </nav><!-- #secondaryNav -->
+        </div><!-- .nine.columns -->
+    </div><!-- .row -->
+
+    <!-- :: MAIN NAVIGATION AND DOWNLOAD BUTTON :: -->
+    <div class="row">
+        <div class="sixteen columns">
+            
+    
+            <nav id="mainNavDocs" class="documentation">
+                <ul>
+                    <li><a href="/overview">Overview</a></li>
+                    <li><a href="/community">Community</a></li>
+                    <li class="active"><a href="/documentation">Documentation</a></li>
+                    <li><a href="http://terracotta.org/news">News</a></li>
+                </ul>
+                <a href="/downloads">Download</a>
+            </nav><!-- #mainNav -->
+            
+        </div><!-- .sixteen.columns -->
+    </div><!-- .row -->
+
+
+    
+    
+    <!-- :: MAIN HEADLINE -->
+    <div class="row" id="headline">
+        <div class="sixteen columns">
+            <h2>Documentation <small>Quartz 2.0.x</small></h2>
+        </div>
+    </div>
+
+
+</div><!-- .container -->
+
+</div><!--.wrapper-->
+
+
+
+
+
+
+<div class="template-two-column container interior docs">
+
+    <div class="row">
+    
+
+        <div class="four columns sidenav">
+            
+
+<ul class="sidebar">
+    <li><a href="/documentation">Welcome</a></li>
+    <li><a href="/documentation#current-product-documentation">Current Documentation</a></li>
+    <li><a href="http://www.terracotta.org/confluence/display/release/Home" target="_blank">Release Notes</a></li>
+    <li>
+        <a href="/documentation#previous-versions">Previous Versions</a>
+    </li>    
+    <li>
+        <a href="/documentation#other-documents">Other Documents</a>
+    </li>    
+</ul>
+
+
+
+        </div>
+
+        <div class="twelve columns has-sidebar content-column">
+            
+
+<div class="documentation-content">
+
+<div class="secNavPanel">
+          <a href="./" title="Go to Tutorial Table of Contents">Table of Contents</a> |
+          <a href="/documentation/quartz-2.x/tutorials/tutorial-lesson-05" title="Go to Lesson 5">&lsaquo;&nbsp;Lesson 5</a> |
+          <a href="/documentation/quartz-2.x/tutorials/tutorial-lesson-07" title="Go to Lesson 7">Lesson 7&nbsp;&rsaquo;</a>
+</div>
+
+<h1 id="tutorial">Tutorial</h1>
+
+<h2 id="lesson-6-crontrigger">Lesson 6: CronTrigger</h2>
+
+<p>CronTrigger is often more useful than SimpleTrigger, if you need a job-firing schedule that recurs based on
+calendar-like notions, rather than on the exactly specified intervals of SimpleTrigger.</p>
+
+<p>With CronTrigger, you can specify firing-schedules such as "every Friday at noon", or "every weekday and 9:30
+am", or even "every 5 minutes between 9:00 am and 10:00 am on every Monday, Wednesday and Friday during January".</p>
+
+<p>Even so, like SimpleTrigger, CronTrigger has a <strong><em>startTime</em></strong> which specifies when the schedule is in
+force, and an (optional) <strong><em>endTime</em></strong> that specifies when the schedule should be discontinued.</p>
+
+<h3 id="TutorialLesson6-CronExpressions">Cron Expressions</h3>
+
+<p><strong><em>Cron-Expressions</em></strong> are used to configure instances of CronTrigger. Cron-Expressions are strings
+that are actually made up of seven sub-expressions, that describe individual details of the schedule. These
+sub-expression are separated with white-space, and represent:</p>
+
+<ol>
+<li>Seconds</li>
+<li>Minutes</li>
+<li>Hours</li>
+<li>Day-of-Month</li>
+<li>Month</li>
+<li>Day-of-Week</li>
+<li>Year (optional field)</li>
+</ol>
+
+<p>An example of a complete cron-expression is the string <em>"0 0 12 ? * WED"</em> &#45; which means "every
+Wednesday at 12:00:00 pm".</p>
+
+<p>Individual sub-expressions can contain ranges and/or lists. For example, the day of week field in the previous
+(which reads "WED") example could be replaced with "MON-FRI", "MON,WED,FRI", or even "MON-WED,SAT".</p>
+
+<p>Wild-cards (the '<em>' character) can be used to say "every" possible value of this field. Therefore the '</em>'
+character in the "Month" field of the previous example simply means "every month". A '*' in the Day-Of-Week field would
+therefore obviously mean "every day of the week".</p>
+
+<p>All of the fields have a set of valid values that can be specified. These values should be fairly obvious - such
+as the numbers 0 to 59 for seconds and minutes, and the values 0 to 23 for hours. Day-of-Month can be any value 1-31,
+but you need to be careful about how many days are in a given month&#33; Months can be specified as values between 0 and
+11, or by using the strings JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV and DEC. Days-of-Week can be specified
+as values between 1 and 7 (1 = Sunday) or by using the strings SUN, MON, TUE, WED, THU, FRI and SAT.</p>
+
+<p>The '/' character can be used to specify increments to values. For example, if you put '0/15' in the Minutes
+field, it means 'every 15th minute of the hour, starting at minute zero'. If you used '3/20' in the Minutes field, it 
+would mean 'every 20th minute of the hour, starting at minute three' - or in other words it is the same as specifying 
+'3,23,43' in the Minutes field.  Note the subtlety that "<em>/35" does *not</em> mean "every 35 minutes" - it mean
+"every 35th minute of the hour, starting at minute zero" - or in other words the same as specifying '0,35'.</p>
+
+<p>The '?' character is allowed for the day-of-month and day-of-week fields. It is used to specify "no specific
+value". This is useful when you need to specify something in one of the two fields, but not the other. See the examples
+below (and CronTrigger JavaDoc) for clarification.</p>
+
+<p>The 'L' character is allowed for the day-of-month and day-of-week fields. This character is short-hand for
+"last", but it has different meaning in each of the two fields. For example, the value "L" in the day-of-month field
+means "the last day of the month" - day 31 for January, day 28 for February on non-leap years. If used in the
+day-of-week field by itself, it simply means "7" or "SAT". But if used in the day-of-week field after another value, it
+means "the last xxx day of the month" - for example "6L" or "FRIL" both mean "the last friday of the month".  You
+can also specify an offset from the last day of the month, such as "L-3" which would mean the third-to-last day of the
+calendar month. <em>When using the 'L' option, it is important not to specify lists, or ranges of values, as you'll get 
+confusing/unexpected results.</em></p>
+
+<p>The 'W' is used to specify the weekday (Monday-Friday) nearest the given day. As an example, if you were to
+specify "15W" as the value for the day-of-month field, the meaning is: "the nearest weekday to the 15th of the month".</p>
+
+<p>The '#' is used to specify "the nth" XXX weekday of the month. For example, the value of "6#3" or "FRI#3" in the
+day-of-week field means "the third Friday of the month".</p>
+
+<p>Here are a few more examples of expressions and their meanings - you can find even more in the JavaDoc for
+org.quartz.CronExpression</p>
+
+<h3 id="TutorialLesson6-ExampleCronExpressions">Example Cron Expressions</h3>
+
+<p>CronTrigger Example 1 - an expression to create a trigger that simply fires every 5 minutes</p>
+
+<p>"0 0/5 * * * ?"</p>
+
+<p>CronTrigger Example 2 - an expression to create a trigger that fires every 5 minutes, at 10 seconds after the minute
+(i.e. 10:00:10 am, 10:05:10 am, etc.).</p>
+
+<p>"10 0/5 * * * ?"</p>
+
+<p>CronTrigger Example 3 - an expression to create a trigger that fires at 10:30, 11:30, 12:30, and 13:30, on every
+Wednesday and Friday.</p>
+
+<p>"0 30 10-13 ? * WED,FRI"</p>
+
+<p>CronTrigger Example 4 - an expression to create a trigger that fires every half hour between the hours of 8 am and 10 am
+on the 5th and 20th of every month. Note that the trigger will NOT fire at 10:00 am, just at 8:00, 8:30, 9:00 and 9:30</p>
+
+<p>"0 0/30 8-9 5,20 * ?"</p>
+
+<p>Note that some scheduling requirements are too complicated to express with a single trigger - such as "every 5 minutes
+between 9:00 am and 10:00 am, and every 20 minutes between 1:00 pm and 10:00 pm". The solution in this scenario is to
+simply create two triggers, and register both of them to run the same job.</p>
+
+<h3 id="TutorialLesson6-ExampleCronExpressions">Building CronTriggers</h3>
+
+<p>CronTrigger instances are built using TriggerBuilder (for the trigger's main properties) and CronScheduleBuilder
+(for the CronTrigger-specific properties).  To use these builders in a DSL-style, use static imports:</p>
+
+<pre>
+import static org.quartz.TriggerBuilder.*;
+import static org.quartz.CronScheduleBuilder.*;
+import static org.quartz.DateBuilder.*:
+</pre>
+
+<p><strong>Build a trigger that will fire every other minute, between 8am and 5pm, every day:</strong></p>
+
+<pre>
+  trigger = newTrigger()
+    .withIdentity("trigger3", "group1")
+    .withSchedule(cronSchedule("0 0/2 8-17 * * ?"))
+    .forJob("myJob", "group1")
+    .build();
+</pre>
+
+<p><strong>Build a trigger that will fire daily at 10:42 am:</strong></p>
+
+<pre>
+  trigger = newTrigger()
+    .withIdentity("trigger3", "group1")
+    .withSchedule(dailyAtHourAndMinute(10, 42))
+    .forJob(myJobKey)
+    .build();
+</pre>
+
+<p>or -</p>
+
+<pre>
+  trigger = newTrigger()
+    .withIdentity("trigger3", "group1")
+    .withSchedule(cronSchedule("0 42 10 * * ?"))
+    .forJob(myJobKey)
+    .build();
+</pre>
+
+<p><strong>Build a trigger that will fire on Wednesdays at 10:42 am, in a TimeZone other than the system's default:</strong></p>
+
+<pre>
+  trigger = newTrigger()
+    .withIdentity("trigger3", "group1")
+    .withSchedule(weeklyOnDayAndHourAndMinute(DateBuilder.WEDNESDAY, 10, 42))
+    .forJob(myJobKey)
+    .inTimeZone(TimeZone.getTimeZone("America/Los_Angeles"))
+    .build();
+</pre>
+
+<p>or -</p>
+
+<pre>
+  trigger = newTrigger()
+    .withIdentity("trigger3", "group1")
+    .withSchedule(cronSchedule("0 42 10 ? * WED"))
+    .inTimeZone(TimeZone.getTimeZone("America/Los_Angeles"))
+    .forJob(myJobKey)
+    .build();
+</pre>
+
+<h3 id="TutorialLesson6-CronTriggerMisfireInstructions">CronTrigger Misfire Instructions</h3>
+
+<p>The following instructions can be used to inform Quartz what it should do when a misfire occurs for CronTrigger.
+(Misfire situations were introduced in the More About Triggers section of this tutorial). These instructions are defined
+as constants on CronTrigger itself (including JavaDoc describing their behavior). The instructions include:</p>
+
+<p><strong>Misfire Instruction Constants of CronTrigger</strong></p>
+
+<pre>
+MISFIRE_INSTRUCTION_IGNORE_MISFIRE_POLICY
+MISFIRE_INSTRUCTION_DO_NOTHING
+MISFIRE_INSTRUCTION_FIRE_NOW
+</pre>
+
+<p>All triggers also have the <em>Trigger.MISFIRE_INSTRUCTION_SMART_POLICY</em> instruction available for use, and
+this instruction is also the default for all trigger types. The 'smart policy' instruction is interpreted by CronTrigger
+as <em>MISFIRE_INSTRUCTION_FIRE_NOW.</em> The JavaDoc for the CronTrigger.updateAfterMisfire() method explains the exact
+details of this behavior.</p>
+
+<p>When building CronTriggers, you specify the misfire instruction as part of the simple schedule 
+(via CronSchedulerBuilder):</p>
+
+<pre>
+  trigger = newTrigger()
+    .withIdentity("trigger3", "group1")
+    .withSchedule(cronSchedule("0 0/2 8-17 * * ?")
+        ..withMisfireHandlingInstructionFireAndProceed())
+    .forJob("myJob", "group1")
+    .build();
+</pre>
+
+
+</div>
+
+
+        </div>
+
+    
+    </div>
+</div>
+
+
+
+
+    <!-- :: MAIN FOOTER AREA AND INFO TABS :: -->
+
+    <div class="wrapper footer">
+        <div class="container">
+
+            
+            <footer>
+                <div class="row">
+
+                    <div class="six columns">
+    <nav>
+        <h5>Projects</h5>
+        <ul>
+            <li><a href="http://ehcache.org">Ehcache</a></li>
+            <li><a href="http://quartz-scheduler.org">Quartz Scheduler</a></li>
+        </ul>
+    </nav>
+</div><!-- .four.columns -->
+
+<div class="six offset-by-one columns">
+    <nav>
+        <h5>How to get it</h5>
+        <ul>
+            <li><a href="/downloads">Download Now</a></li>
+            <li><a href="http://terracotta.org/community">Join the Community</a></li>
+            <li><a href="http://terracotta.org/services/training">Sign Up for Training</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="two offset-by-one columns">
+    <nav>
+        <h5>Follow Us</h5>
+        <ul id="followUsPlz">
+            <li>
+                <a href="http://www.linkedin.com/company/terracotta">
+                    <img src="/ui/images/icon-linkedin.png" alt="LinkedIn" />Linkedin
+                </a>
+            </li>
+            <li>
+                <a href="http://www.facebook.com/Terracotta">
+                    <img src="/ui/images/icon-facebook.png" alt="Facebook" />Facebook
+                </a>
+            </li>
+            <li>
+                <a href="http://twitter.com/#!/terracottatech">
+                    <img src="/ui/images/icon-twitter.png" alt="Twitter" />Twitter
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+                </div><!-- .row -->
+            </footer>
+
+        </div><!-- .container -->
+    </div><!-- .wrapper -->
+
+
+    <!-- :: SECONDARY PAGE FOOTER :: -->
+    <div class="wrapper sub-footer">
+        <div class="container">
+
+            <footer id="sub">
+                <div class="row without">
+                    <div class="columns">
+                        <nav>
+                            <ul>
+                                <li>&copy;Terracotta, Inc., a wholly-owned subsidiary of Software AG USA, Inc. All rights reserved.</li>
+                                <li><a href="http://terracotta.org/contact">Contact Us</a> | </li>
+                                <li><a href="http://terracotta.org/legal">Copyright</a> | </li>
+                                <li><a href="http://terracotta.org/legal">Privacy Policy</a> | </li>
+                                <li><a href="http://terracotta.org/legal">Legal</a></li>
+                            </ul>
+                        </nav>
+                    </div><!-- .ten.columns -->
+                </div><!-- .row -->
+            </footer><!-- #sub -->
+
+        </div><!-- .container -->
+    </div><!-- .wrapper -->
+
+
+
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>Munchkin.init('858-DJP-749');</script>
+
+
+<script type="text/javascript" src="/ui/javascripts/prettify/prettify.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(window).load(function(event){
+    prettyPrint();
+});
+//]]>
+</script>
+
+
+</body>
+</html>
