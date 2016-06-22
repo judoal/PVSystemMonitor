@@ -12,6 +12,8 @@ communications protocols published by Outback.
 
 MateSimulator simulate the MATE2 reading data previously recorded as matetest.obm.  This runs the MateDataStream class which can be configured (via cmd line) to read a file, the stream from the mate or a stream from the matesimulator.  Currently analyzed data is output to console.  TODO--create static web pages (with java) to be sent to a server.
 
+Changed the ethernet converter to USR-WIFI232-610 Serial RS232 RS485 to Wifi 802.11 b/g/n and Ethernet Converter.
+
 =======
 Monitor serial data stream
 >>>>>>> origin/master
