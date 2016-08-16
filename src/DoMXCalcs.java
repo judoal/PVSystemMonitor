@@ -1,3 +1,4 @@
+import java.io.IOException;
 
     /*
      * MX Data  
@@ -17,16 +18,21 @@
 13  sum [13]    chksum
      */
 
+
+
 public class DoMXCalcs {
-    public static String doMXCalcs(Configs fxC) {
+    Configs config;
+    public static String doMXCalcs(Configs fxC) throws IOException {
+        Configs config = Configs.getInstance();    
         int ID = fxC.splitData[0].charAt(0) - fxC.preMXIndex;       
         String retval=null;
         int chargerCurrent = Integer.parseInt(fxC.splitData[2]);
         int pvCurrent = Integer.parseInt(fxC.splitData[3]);
         int pvVoltage = Integer.parseInt(fxC.splitData[4]);
-        double dailyKWH = (Float.parseFloat(fxC.splitData[5]))/10.;
+        config.dailyKWH = (Double.parseDouble(fxC.splitData[5])/10.);
         fxC.pvWatts = (double)(pvCurrent * pvVoltage);
-        double pvKiloWatts = fxC.pvWatts/1000.;
+        config.pvKiloWatts = fxC.pvWatts/1000.;
+        fxC.calcDailyKWH[ID] += config.pvKiloWatts/3600.;
  
         double vBatt = (Float.parseFloat(fxC.splitData[10]))/10.;
         
@@ -35,8 +41,9 @@ public class DoMXCalcs {
         retval = "Ichger: " + String.format("%03d", chargerCurrent)+
                  " Ipv: " + String.format("%03d", pvCurrent) + 
                  " Vpv: " + String.format("%03d", pvVoltage) +
-                 " Daily KWH: " + String.format("%03f", dailyKWH) +
-                 " PV KiloWatts: " + String.format("%03f", pvKiloWatts ) + 
+                 " Daily KWH: " + String.format("%03f", config.dailyKWH) +
+                 " PV Watts: " + String.format("%03f",fxC.pvWatts) +
+                 " PV KiloWatts: " + String.format("%03f", config.pvKiloWatts ) + 
                  " Batt Volts: " + vBatt +
                  " Calc Daily KWH: " + String.format("%03f", fxC.calcDailyKWH[ID]);   
         }
@@ -44,6 +51,7 @@ public class DoMXCalcs {
             System.out.println(ID);
             e.printStackTrace();
         }
+                
         return retval;
     }
 }

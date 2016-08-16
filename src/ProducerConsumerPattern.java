@@ -18,13 +18,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import dials.RotateImage;
+
 public class ProducerConsumerPattern {
 
     private static BlockingQueue<String> sharedQueue;
     private static BlockingQueue<String> chkSumErrQueue;
     private static BlockingQueue<String> missingDataQueue;
     private static BlockingQueue<String> shortDataStringQueue;
-
+    
     static Logger log = LoggerFactory.getLogger(MateDataStream.class);
     Configs fxC = Configs.getInstance();
 
@@ -181,6 +183,14 @@ class Consumer implements Runnable {
                 log.error(ex.toString());
             }
             System.out.print(tmpStr2 + tmpStr1);
+            
+            try {
+                new RotateImage(fxC.pvWatts,true,0,10000);
+            }
+            catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             
         }
     }

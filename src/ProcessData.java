@@ -47,7 +47,7 @@ public class ProcessData {
 
     }
 
-    public String processMateData(Configs fxC, String[] str) {
+    public String processMateData(Configs fxC, String[] str) throws IOException {
         /*
          * get device type from first character if numeric -> MX charge
          * controller otherwise alpha -> FX or battery
@@ -333,7 +333,7 @@ public class ProcessData {
 13  sum [12]    chksum
      */
 
-    static String decodeMXdata(Configs fxC, String[] str) {
+    static String decodeMXdata(Configs fxC, String[] str) throws IOException {
           String [] splitData = str;
         String interpData = "";
         for (int index = 0; index < splitData.length; index++) {

@@ -53,16 +53,14 @@ public class MateSimulator {
                 for (int i = 0; i < devCnt; i++) {
                     readBlock();
                 }
-                Thread.sleep(1000);
+                Thread.sleep(1);
                 writeBlock();
             }
         }
         catch (IOException e) {
             System.exit(-1);
         }
-//        catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
         catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
