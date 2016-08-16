@@ -51,7 +51,9 @@ public class Configs {
     double pvWatts;
     double[] calcDailyKWH;
 
-
+    double pvKiloWatts;
+    double dailyKWH;
+    
     float Vbatt;
 
     String[] splitData;
